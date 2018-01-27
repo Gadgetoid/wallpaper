@@ -18,7 +18,11 @@ def load_tile(x, y):
         tile = Image.open(filename).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT))
         print("Found: {}".format(filename))
     except IOError:
-        tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (255, 0, 100, 0))
+        row = y % 2
+        col = (x + row) % 2
+
+        grey = 5 + (5 * col)
+        tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (grey, grey, grey, 255))
 
     return tile
 
