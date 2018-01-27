@@ -27,9 +27,7 @@ My build/set script on Windows 10 currently looks like this. It's... heinous and
 git pull pullonly master
 wsl bash -c "cd /path/to/git/wallpaper && python build-safe.py"
 cp wallpaper.png ~/AppData/Roaming/Microsoft/Windows/Themes/TranscodedWallpaper
-rundll32.exe user32.dll, UpdatePerUserSystemParameters
-sleep 1
-rundll32.exe user32.dll, UpdatePerUserSystemParameters
+rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1 ,True
 ```
 
 So- briefly:
