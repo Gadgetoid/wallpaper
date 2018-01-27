@@ -9,10 +9,14 @@ TILE_HEIGHT = 64
 TILES_X = int(DESKTOP_WIDTH / TILE_WIDTH)
 TILES_Y = int(DESKTOP_HEIGHT / TILE_HEIGHT)
 
+found_count = 0
+found_total = TILES_X * TILES_Y
+
 def get_filename(x, y, extension='png'):
     return "tiles/{x:02}-{y:02}.{ext}".format(x=x, y=y, ext=extension)
 
 def load_tile(x, y):
+    global found_count
 
     extensions = ['png', 'jpg']
 
@@ -21,6 +25,7 @@ def load_tile(x, y):
         try:
             tile = Image.open(filename).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT))
             print("Found: {}".format(filename))
+            found_count += 1
             return tile
         except IOError:
             pass
@@ -42,5 +47,12 @@ if __name__ == "__main__":
             offset_y = y * TILE_HEIGHT
             tile = load_tile(x, y)
             wallpaper.paste(tile, (offset_x, offset_y))
+
+    print("Found {found} tiles out of a {total} total. {remaining} tiles left!\nProgress: {prog:1.1f}%".format(
+        found=found_count,
+        total=found_total,
+        remaining=found_total-found_count,
+        prog=(100.0/found_total) * found_count
+    ))
 
     wallpaper.save("wallpaper.png")
