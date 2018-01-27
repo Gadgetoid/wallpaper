@@ -16,4 +16,10 @@ cp wallpaper.png ~/AppData/Roaming/Microsoft/Windows/Themes/TranscodedWallpaper
 rm ~/AppData/Roaming/Microsoft/Windows/Themes/CachedFiles/*1920_1080*.jpg
 
 # And force the wallpaper to update
-rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1 ,True
+# Sometimes this will work first try, sometimes not, there's no rhyme or reason to it
+# The only failsafe method I can find is to keep smashing at the update until the cache file comes back
+while [ ! -f ~/AppData/Roaming/Microsoft/Windows/Themes/CachedFiles/*1920_1080*.jpg ]; do
+    rundll32.exe user32.dll,UpdatePerUserSystemParameters 1, True
+    rundll32.exe user32.dll,UpdatePerUserSystemParameters
+    sleep 1
+done;
