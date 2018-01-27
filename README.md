@@ -27,6 +27,7 @@ My build/set script on Windows 10 currently looks like this. It's... heinous and
 git pull pullonly master
 wsl bash -c "cd /path/to/git/wallpaper && python build-safe.py"
 cp wallpaper.png ~/AppData/Roaming/Microsoft/Windows/Themes/TranscodedWallpaper
+rm ~/AppData/Roaming/Microsoft/Windows/Themes/CachedFiles/*1920_1080*.jpg
 rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1 ,True
 ```
 
@@ -35,5 +36,6 @@ So- briefly:
 * I have a pullonly origin set up so I can passwordless pull the latest tiles
 * I have a copy of the build file named `build-safe.py` that hasn't been tampered with ;) (ahaha, this is doomed to fail)
 * The wallpaper png file is copied to the location Windows 10 stores its wallpaper file
-* The user prefs are updated, twice, or maybe more times because this seems to work unreliably!
+* Delete the cached wallpaper file
+* Update the user prefs to display the new file
 
