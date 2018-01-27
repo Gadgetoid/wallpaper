@@ -35,26 +35,15 @@ What if ever image had an accompanying data file that dictated its x/y position/
 
 # Building Your Own
 
-Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size.
+Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size. This script outputs `wallpaper.png`
 
-My build/set script on Windows 10 currently looks something like this. It's... heinous and I don't even know if it will work reliably:
+On Windows 10 I use WallpaperChanger.exe to change the wallpaper from the command-line. You can find it here: https://github.com/philhansen/WallpaperChanger
+
+EG:
 
 ```
-#!/bin/bash
-git pull pullonly master
-wsl bash -c "cd /path/to/git/wallpaper && python build-safe.py"
-cp wallpaper.png ~/AppData/Roaming/Microsoft/Windows/Themes/TranscodedWallpaper
-rm ~/AppData/Roaming/Microsoft/Windows/Themes/CachedFiles/*1920_1080*.jpg
-rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1 ,True
+./WallpaperChanger.exe wallpaper.png
 ```
-
-So- briefly:
-
-* I have a pullonly origin set up so I can passwordless pull the latest tiles
-* I have a copy of the build file named `build-safe.py` that hasn't been tampered with ;) (ahaha, this is doomed to fail)
-* The wallpaper png file is copied to the location Windows 10 stores its wallpaper file
-* Delete the cached wallpaper file
-* Update the user prefs to display the new file
 
 # Fund my insanity
 
