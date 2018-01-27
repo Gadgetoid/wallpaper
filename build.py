@@ -9,20 +9,27 @@ TILE_HEIGHT = 64
 TILES_X = int(DESKTOP_WIDTH / TILE_WIDTH)
 TILES_Y = int(DESKTOP_HEIGHT / TILE_HEIGHT)
 
-def get_filename(x, y):
-    return "tiles/{x}-{y}.png".format(x=x, y=y)
+def get_filename(x, y, extension='png'):
+    return "tiles/{x:02}-{y:02}.{ext}".format(x=x, y=y, ext=extension)
 
 def load_tile(x, y):
-    filename = get_filename(x, y)
-    try:
-        tile = Image.open(filename).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT))
-        print("Found: {}".format(filename))
-    except IOError:
-        row = y % 2
-        col = (x + row) % 2
 
-        grey = 5 + (5 * col)
-        tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (grey, grey, grey, 255))
+    extensions = ['png', 'jpg']
+
+    for ext in extensions:
+        filename = get_filename(x, y, extension=ext)
+        try:
+            tile = Image.open(filename).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT))
+            print("Found: {}".format(filename))
+            return tile
+        except IOError:
+            pass
+
+    row = y % 2
+    col = (x + row) % 2
+
+    grey = 5 + (5 * col)
+    tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (grey, grey, grey, 255))
 
     return tile
 
