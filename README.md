@@ -39,3 +39,20 @@ So- briefly:
 * Delete the cached wallpaper file
 * Update the user prefs to display the new file
 
+# Fund my insanity
+
+I originally planned for this project to be an insane GoFundMe where I fund the purchase of a shiny new monitor (both mine are 8+ years old)
+by rewarding every donator with a 64x64 slice of my wallpaper *forever*.
+
+This was a bad fit for GoFundMe though, and my antics feel a little out of place alongside the genuine impassioned pleas for help.
+
+Also GoFundMe doesn't really *do* rewards, and had no framework in place for me to keep track of donators and make sure they got their slot.
+
+So, this is the result; a git-based system for giving users control over 64x64 chunks of my wallpaper.
+
+In fact you can clone and modify this script to crowdsource X by Y chunks of any size wallpaper or image via Git.
+
+I still need your support, though, and I want to dedicate more of my time to random acts of coding kindness and insanity.
+If you appreciate all the useful (and silly) stuff that I do then toss me a dollar on Patreon, it's super appreciated:
+
+https://www.patreon.com/gadgetoid
