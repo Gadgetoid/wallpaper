@@ -31,7 +31,7 @@ I don't want too many rules, but put forth this simple code of etiquette:
 
 # Roadmap
 
-What if ever image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
+What if every image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
 
 # Building Your Own
 
