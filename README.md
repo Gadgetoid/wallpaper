@@ -4,6 +4,21 @@ Picking wallpaper is difficult, so it's time to bring the power of the internet 
 
 Submit your tile into tiles as a 64x64 pixel PNG image and this script will hopefully slurp them up and turn them into an abominable mess of a wallpaper.
 
+# Tile Naming
+
+Your tile *must* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
+
+* x = 0 to 29
+* y = 0 to 15
+
+So: `01-02.png` or `29-15.png` are valid.
+
+Have fun! For updates follow me on:
+
+* Twitter: https://twitter.com/gadgetoid
+* Discord: https://discord.gg/8wRN4WB
+* Patron: https://patreon.com/gadgetoid
+
 # Etiquette
 
 I don't want too many rules, but put forth this simple code of etiquette:
@@ -18,9 +33,11 @@ I don't want too many rules, but put forth this simple code of etiquette:
 
 What if ever image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
 
-# Building
+# Building Your Own
 
-My build/set script on Windows 10 currently looks like this. It's... heinous and I don't even know if it will work reliably:
+Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size.
+
+My build/set script on Windows 10 currently looks something like this. It's... heinous and I don't even know if it will work reliably:
 
 ```
 #!/bin/bash
