@@ -83,7 +83,7 @@ if __name__ == "__main__":
                 grey = 5 + (5 * col)
                 tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (grey, grey, grey, 255))
 
-            wallpaper.paste(tile, (offset_x, offset_y))
+            wallpaper.paste(tile, (offset_x, offset_y), mask=tile)
 
     print("Found {found} tiles out of a {total} total. {remaining} tiles left!\nProgress: {prog:1.1f}%".format(
         found=found_count,
