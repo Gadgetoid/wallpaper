@@ -6,14 +6,16 @@ Submit your tile into tiles as a 64x64 pixel PNG image and this script will hope
 
 # Tile Naming
 
-Your tile *must* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
+Your tile *should* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
 
 * x = 0 to 29
 * y = 0 to 15
 
 So: `01-02.png` or `29-15.png` are valid.
 
-Have fun! For updates follow me on:
+Any invalid images will be randomly placed while space is available, but you should pick a slot while stocks last!
+
+Have fun! For updates and feedback follow me on:
 
 * Twitter: https://twitter.com/gadgetoid
 * Discord: https://discord.gg/8wRN4WB
@@ -23,7 +25,7 @@ Have fun! For updates follow me on:
 
 I don't want too many rules, but put forth this simple code of etiquette:
 
-* Unless it violates the etiquette, I've got to merge your PR
+* Unless it violates the etiquette, I *must* merge your PR
 * Smut images are unimaginative, you're better than that
 * Racist/hateful images are also unimaginative, seriously, why do I need to even say this?
 * Trampling on other people's tiles is kinda mean, but if they're hogging the whole darn wallpaper they kinda deserve it
@@ -31,18 +33,26 @@ I don't want too many rules, but put forth this simple code of etiquette:
 
 # Roadmap
 
+* Add wallpaper WIDTH/HEIGHT command-line options to build.py
+* Add tile WIDTH/HEIGHT command-line options to build.py
+
 What if every image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
 
 # Building Your Own
 
 Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size. This script outputs `wallpaper.png`
 
-On Windows 10 I use WallpaperChanger.exe to change the wallpaper from the command-line. You can find it here: https://github.com/philhansen/WallpaperChanger
+For the convinience of Windows 10 users (of which I am one) I have packaged build.py up into build.exe, which should *just work* for you.
 
-EG:
+On Windows 10 I use WallpaperChanger.exe to change the wallpaper from the command-line, it has been included for convinience.
+
+You can find the source and LICENSE here: https://github.com/philhansen/WallpaperChanger
+
+To build and set the wallpaper:
 
 ```
-./WallpaperChanger.exe wallpaper.png
+build.exe
+WallpaperChanger.exe wallpaper.png
 ```
 
 # Fund my insanity
