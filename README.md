@@ -10,8 +10,7 @@ Your tile *should* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixe
 
 * x = 0 to 29
 * y = 0 to 15
-
-So: `01-02.png` or `29-15.png` are valid.
+* `0, 0` is the top left of the image so: `01-02.png` or `29-15.png` are valid and will be placed on the second row, third column, and 30th row, 16th column respectively.
 
 Any invalid images will be randomly placed while space is available, but you should pick a slot while stocks last!
 
