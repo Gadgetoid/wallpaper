@@ -22,6 +22,7 @@ class Wallpaperer():
         self.tile_width = tile_width
         self.tile_height = tile_height
         self.verbose = verbose
+        self.formats = ('png', 'jpg', 'jpeg')
 
     @property
     def tiles_x(self):
@@ -40,7 +41,7 @@ class Wallpaperer():
         random_tiles = []
 
         tiles = []
-        for ext in ['png', 'jpg', 'jpeg']:
+        for ext in self.formats:
             tiles.extend(glob.glob(os.path.join(directory, "*.{}".format(ext))))
 
         self.found_count = len(tiles)
@@ -48,7 +49,7 @@ class Wallpaperer():
         for tile in tiles:
             img = Image.open(tile).convert("RGBA").resize((self.tile_width, self.tile_height), resample=Image.BILINEAR)
 
-            filename = tile.split('/')[-1]
+            filename = os.path.split(tile)[-1]
             fname, fext = filename.split('.')
             for delimiter in ['x','-','_','X']:
                 if delimiter in fname:
