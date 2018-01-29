@@ -39,9 +39,12 @@ What if every image had an accompanying data file that dictated its x/y position
 
 # Building Your Own
 
-Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size. This script outputs `wallpaper.png`
+Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size. This script outputs a 1920x1080 64x64 tile `wallpaper.png`
+but if you run `./build.py --help` you'll see a number of options to customise the output.
 
 For the convinience of Windows 10 users (of which I am one) I have packaged build.py up into build.exe, which should *just work* for you.
+
+You can get the latest build.exe by heading over to the release page here: https://github.com/Gadgetoid/wallpaper/releases
 
 On Windows 10 I use WallpaperChanger.exe to change the wallpaper from the command-line, it has been included for convinience.
 
