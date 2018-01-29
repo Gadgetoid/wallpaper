@@ -1,6 +1,7 @@
-from PIL import Image
+from PIL import Image, ImageDraw
 import glob
 import random
+import colorsys
 
 DESKTOP_WIDTH = 1920
 DESKTOP_HEIGHT = 1080
@@ -26,7 +27,7 @@ def place_tiles():
     found_count = len(tiles)
     
     for tile in tiles:
-        img = Image.open(tile).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT))
+        img = Image.open(tile).convert("RGBA").resize((TILE_WIDTH, TILE_HEIGHT), resample=Image.BILINEAR)
 
         filename = tile.split('/')[-1]
         fname, fext = filename.split('.')
@@ -69,6 +70,17 @@ def has_slot(grid):
 if __name__ == "__main__":
     wallpaper = Image.new("RGBA", (DESKTOP_WIDTH, DESKTOP_HEIGHT), (0, 0, 0, 255))
 
+    draw = ImageDraw.Draw(wallpaper)
+
+    for y in range(TILES_Y):
+        val = (1.0 / TILES_Y) * y
+        for x in range(TILES_X):
+            hue = (1.0 / TILES_X) * x
+            r, g, b = [int(c * 255) for c in colorsys.hsv_to_rgb(hue, 1.0, val)]
+            rainbow_x = x * TILE_WIDTH
+            rainbow_y = y * TILE_HEIGHT
+            draw.rectangle((rainbow_x, rainbow_y, rainbow_x+TILE_WIDTH, rainbow_y+TILE_HEIGHT), fill=(r, g, b, 255), outline=None)
+
     grid = place_tiles()
 
     for x in range(TILES_X):
@@ -81,7 +93,7 @@ if __name__ == "__main__":
                 row = y % 2
                 col = (x + row) % 2
                 grey = 5 + (5 * col)
-                tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (grey, grey, grey, 255))
+                tile = Image.new("RGBA", (TILE_WIDTH, TILE_HEIGHT), (255, 255, 255, grey))
 
             wallpaper.paste(tile, (offset_x, offset_y), mask=tile)
 
