@@ -4,11 +4,27 @@ Picking wallpaper is difficult, so it's time to bring the power of the internet 
 
 Submit your tile into tiles as a 64x64 pixel PNG image and this script will hopefully slurp them up and turn them into an abominable mess of a wallpaper.
 
+# Tile Naming
+
+Your tile *should* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
+
+* x = 0 to 29
+* y = 0 to 15
+* `0, 0` is the top left of the image so `01-02.png` or `29-15.png` are valid and will be placed on the second row, third column, and 30th row, 16th column respectively.
+
+Any invalid images will be randomly placed while space is available, but you should pick a slot while stocks last!
+
+Have fun! For updates and feedback follow me on:
+
+* Twitter: https://twitter.com/gadgetoid
+* Discord: https://discord.gg/8wRN4WB
+* Patron: https://patreon.com/gadgetoid
+
 # Etiquette
 
 I don't want too many rules, but put forth this simple code of etiquette:
 
-* Unless it violates the etiquette, I've got to merge your PR
+* Unless it violates the etiquette, I *must* merge your PR
 * Smut images are unimaginative, you're better than that
 * Racist/hateful images are also unimaginative, seriously, why do I need to even say this?
 * Trampling on other people's tiles is kinda mean, but if they're hogging the whole darn wallpaper they kinda deserve it
@@ -16,28 +32,27 @@ I don't want too many rules, but put forth this simple code of etiquette:
 
 # Roadmap
 
-What if ever image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
+* Add wallpaper WIDTH/HEIGHT command-line options to build.py
+* Add tile WIDTH/HEIGHT command-line options to build.py
 
-# Building
+What if every image had an accompanying data file that dictated its x/y position/rotation, etc? Could we make this a crazy graffiti wall of transparent PNGs?
 
-My build/set script on Windows 10 currently looks like this. It's... heinous and I don't even know if it will work reliably:
+# Building Your Own
+
+Most of the magic happens in the build.py script, where you can set your own wallpaper and tile size. This script outputs `wallpaper.png`
+
+For the convinience of Windows 10 users (of which I am one) I have packaged build.py up into build.exe, which should *just work* for you.
+
+On Windows 10 I use WallpaperChanger.exe to change the wallpaper from the command-line, it has been included for convinience.
+
+You can find the source and LICENSE here: https://github.com/philhansen/WallpaperChanger
+
+To build and set the wallpaper:
 
 ```
-#!/bin/bash
-git pull pullonly master
-wsl bash -c "cd /path/to/git/wallpaper && python build-safe.py"
-cp wallpaper.png ~/AppData/Roaming/Microsoft/Windows/Themes/TranscodedWallpaper
-rm ~/AppData/Roaming/Microsoft/Windows/Themes/CachedFiles/*1920_1080*.jpg
-rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1 ,True
+build.exe
+WallpaperChanger.exe wallpaper.png
 ```
-
-So- briefly:
-
-* I have a pullonly origin set up so I can passwordless pull the latest tiles
-* I have a copy of the build file named `build-safe.py` that hasn't been tampered with ;) (ahaha, this is doomed to fail)
-* The wallpaper png file is copied to the location Windows 10 stores its wallpaper file
-* Delete the cached wallpaper file
-* Update the user prefs to display the new file
 
 # Fund my insanity
 
