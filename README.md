@@ -6,11 +6,11 @@ Submit your tile into tiles as a 64x64 pixel PNG image and this script will hope
 
 # Tile Naming
 
-Your tile *should* be named XX-YY.jpg or XX-YY.png, the default wallpaper size is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
+Your tile *should* be named `XX-YY.jpg` or `XX-YY.png`, the default wallpaper size is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
 
-* x = 0 to 29
-* y = 0 to 15
-* `0, 0` is the bottom left of the image
+* x = `00` to `29`
+* y = `00` to `15`
+* `00`, `00` is the top left of the image
 
 For example, both `01-02.png` and `29x15.png` are valid and will be placed on the second column, third row from the bottom, and 30th column, 16th row from the bottom respectively.
 
