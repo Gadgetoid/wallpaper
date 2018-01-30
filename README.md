@@ -6,13 +6,21 @@ Submit your tile into tiles as a 64x64 pixel PNG image and this script will hope
 
 # Tile Naming
 
-Your tile *should* be named XX-YY.jpg or XX-YY.png, my desktop is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
+Your tile *should* be named XX-YY.jpg or XX-YY.png, the default wallpaper size is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
 
 * x = 0 to 29
 * y = 0 to 15
-* `0, 0` is the top left of the image so `01-02.png` or `29-15.png` are valid and will be placed on the second row, third column, and 30th row, 16th column respectively.
+* `0, 0` is the bottom left of the image
+
+For example, both `01-02.png` and `29x15.png` are valid and will be placed on the second column, third row from the bottom, and 30th column, 16th row from the bottom respectively.
 
 Any invalid images will be randomly placed while space is available, but you should pick a slot while stocks last!
+
+Valid file formats are currently:
+
+* .png
+* .jpg
+* .jpeg
 
 Have fun! For updates and feedback follow me on:
 
