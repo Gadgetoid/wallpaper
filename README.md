@@ -4,6 +4,8 @@ Picking wallpaper is difficult, so it's time to bring the power of the internet 
 
 Submit your tile into tiles as a 64x64 pixel PNG image and this script will hopefully slurp them up and turn them into an abominable mess of a wallpaper.
 
+![Wallpaper Preview](wallpaper.jpg)
+
 # Tile Naming
 
 Your tile *should* be named `XX-YY.jpg` or `XX-YY.png`, the default wallpaper size is 1920x1080 pixels, and the X and Y coordinates are zero indexed, which gives you the range:
