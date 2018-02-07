@@ -12,7 +12,7 @@ Your tile *should* be named `XX-YY.jpg` or `XX-YY.png`, the default wallpaper si
 
 * x = `00` to `29`
 * y = `00` to `15`
-* `00`, `00` is the top left of the image
+* `00`, `00` is the bottom left of the image
 
 For example, both `01-02.png` and `29x15.png` are valid and will be placed on the second column, third row from the bottom, and 30th column, 16th row from the bottom respectively.
 
