@@ -15,7 +15,7 @@ DEFAULT_TILE_HEIGHT = 64
 DEFAULT_ADD_RAINBOWS = True
 
 class Wallpaperer():
-    def __init__(self, wallpaper_width=1920, wallpaper_height=1080, tile_width=64, tile_height=64, verbose=False):
+    def __init__(self, wallpaper_width=1920, wallpaper_height=1080, tile_width=64, tile_height=64, verbose=False, smooth=True):
         self.found_count = 0
         self.wallpaper_width = wallpaper_width
         self.wallpaper_height = wallpaper_height
@@ -23,6 +23,7 @@ class Wallpaperer():
         self.tile_height = tile_height
         self.verbose = verbose
         self.formats = ('png', 'jpg', 'jpeg')
+        self.smooth = smooth
 
     @property
     def tiles_x(self):
@@ -47,7 +48,7 @@ class Wallpaperer():
         self.found_count = len(tiles)
         
         for tile in tiles:
-            img = Image.open(tile).convert("RGBA").resize((self.tile_width, self.tile_height), resample=Image.BILINEAR)
+            img = Image.open(tile).convert("RGBA").resize((self.tile_width, self.tile_height), resample=Image.BILINEAR if self.smooth else Image.NEAREST)
 
             filename = os.path.split(tile)[-1]
             fname, fext = filename.split('.')
@@ -96,6 +97,7 @@ if __name__ == "__main__":
     parser.add_argument('--width', type=int, help='wallpaper width in pixels (default: {}px)'.format(DEFAULT_WIDTH), default=DEFAULT_WIDTH)
     parser.add_argument('--height', type=int, help='wallpaper height in pixels (default: {}px)'.format(DEFAULT_HEIGHT), default=DEFAULT_HEIGHT)
     parser.add_argument('--insanity', action='store_true', help='use a proper coordinate system for geniuses! (default: your fault!)', default=False)
+    parser.add_argument('--nearest', action='store_true', help='use nearest filtering to resize tiles', default=False)
     parser.add_argument('--filename', type=str, help='filename to save as (defaut: wallpaper.png)', default='wallpaper.png')
 
     args = parser.parse_args()
@@ -108,7 +110,8 @@ if __name__ == "__main__":
         wallpaper_width=args.width,
         wallpaper_height=args.height,
         tile_width=args.tilewidth,
-        tile_height=args.tileheight)
+        tile_height=args.tileheight,
+        smooth=not args.nearest)
 
     wallpaper = Image.new("RGBA", (args.width, args.height), (0, 0, 0, 255))
 
